@@ -1,4 +1,4 @@
-package com.comunidadedevspace.taskbeats
+package com.comunidadedevspace.taskbeats.presentation
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +12,13 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.comunidadedevspace.taskbeats.data.AppDataBase
+import com.comunidadedevspace.taskbeats.R
+import com.comunidadedevspace.taskbeats.data.Task
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
@@ -72,11 +74,11 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(IO).launch{val  mydabase: List<Task> = dao.getAll()
         adapter.submitList(mydabase)}
     }
-    private fun insertInfoDataBase(task:Task){
+    private fun insertInfoDataBase(task: Task){
         CoroutineScope(IO).launch{ dao.insert(task)
         listFromDataBase()}
     }
-    private fun updatetInfoDataBase(task:Task){
+    private fun updatetInfoDataBase(task: Task){
         CoroutineScope(IO).launch{ dao.update(task)
         listFromDataBase()}
     }
@@ -103,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         opemtaskdetail(task)
         }
     fun opemtaskdetail(task: Task?){
-        val intent = taskdetail.start(this,task)
+        val intent = taskdetail.start(this, task)
         startForResult.launch(intent)
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -133,6 +135,6 @@ class MainActivity : AppCompatActivity() {
      CREAT
     }
 
-data class TaskActyon(val task: Task,val actyontipe: ActyonTipe): Serializable
+data class TaskActyon(val task: Task, val actyontipe: ActyonTipe): Serializable
 
 const val TASK_ACTYON_RESULT = "TASK_ACTYON_RESULT"

@@ -1,4 +1,4 @@
-package com.comunidadedevspace.taskbeats
+package com.comunidadedevspace.taskbeats.presentation
 
 import android.app.Activity
 import android.content.Context
@@ -11,10 +11,12 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import com.comunidadedevspace.taskbeats.R
+import com.comunidadedevspace.taskbeats.data.Task
 import com.google.android.material.snackbar.Snackbar
 
 class taskdetail : AppCompatActivity() {
-     var task: Task ?= null
+     var task: Task?= null
    lateinit var btn_comc: Button
     companion object {
         private const val task_detail_extra = "task.detail.title.extra"
@@ -50,7 +52,7 @@ class taskdetail : AppCompatActivity() {
                 if(task == null) {
                     addOrUpdateTask(0,title, description, ActyonTipe.CREAT)
                 }else{
-                    addOrUpdateTask(task!!.id,title,description,ActyonTipe.UPDAP)
+                    addOrUpdateTask(task!!.id,title,description, ActyonTipe.UPDAP)
 
                 }
             }else{
@@ -77,7 +79,7 @@ class taskdetail : AppCompatActivity() {
             R.id.item_menu_delete -> {
                //retornar opção selecionada
                 if(task != null){
-                 returnAction(task,ActyonTipe.DELETE)
+                 returnAction(task, ActyonTipe.DELETE)
                 } else{
                     showmessege(btn_comc,"Não ha tarefefa para deletar")
                  }
