@@ -16,7 +16,7 @@ import com.comunidadedevspace.taskbeats.data.Task
 import com.google.android.material.snackbar.Snackbar
 
 class taskdetail : AppCompatActivity() {
-     var task: Task?= null
+      var task: Task?= null
    lateinit var btn_comc: Button
     companion object {
         private const val task_detail_extra = "task.detail.title.extra"
