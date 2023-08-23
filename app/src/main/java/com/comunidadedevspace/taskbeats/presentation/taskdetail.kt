@@ -11,9 +11,12 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
 import com.comunidadedevspace.taskbeats.R
 import com.comunidadedevspace.taskbeats.data.Task
 import com.google.android.material.snackbar.Snackbar
+
 
 class taskdetail : AppCompatActivity() {
       var task: Task?= null
@@ -31,16 +34,20 @@ class taskdetail : AppCompatActivity() {
     }
 
     }
+
+    val viewModel: DetailViewModel by viewModels {
+        DetailViewModel.getVMfactory(application)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_taskdetail)
         setSupportActionBar(findViewById(R.id.toobar))
-        //tv_title = findViewById<TextView>(R.id.tv_title_taskdetail)
-        // tv_title.text = task?.title ?:"Adicionar uma tarefa"
          task = intent?.getSerializableExtra(task_detail_extra) as Task?
        val edt_title = findViewById<EditText>(R.id.edt_title)
         val edt_description = findViewById<EditText>(R.id.edt_description)
         btn_comc = findViewById<Button>(R.id.btn_comc)
+
         if(task != null){
             edt_title.setText(task!!.title)
             edt_description.setText(task!!.descryption)
@@ -93,12 +100,10 @@ class taskdetail : AppCompatActivity() {
 
     }
     fun returnAction(task: Task?, actyonTipe: ActyonTipe){
-        val intent = Intent()
-            .apply {
-                val taskActyon = TaskActyon(task!!,actyonTipe)
-                putExtra(TASK_ACTYON_RESULT,taskActyon)
-            }
-        setResult(Activity.RESULT_OK, intent)
+
+        val taskActyon = TaskActyon(task!!,actyonTipe)
+
+        viewModel.execute(taskActyon )
         finish()
     }
     private fun showmessege(view: View, mensagem:String){

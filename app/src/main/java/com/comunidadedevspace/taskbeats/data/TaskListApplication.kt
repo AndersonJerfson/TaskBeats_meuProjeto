@@ -1,8 +1,7 @@
-package com.comunidadedevspace.taskbeats
+package com.comunidadedevspace.taskbeats.data
 
 import android.app.Application
 import androidx.room.Room
-import com.comunidadedevspace.taskbeats.data.AppDataBase
 
 class TaskListApplication: Application() {
    private lateinit var database: AppDataBase
