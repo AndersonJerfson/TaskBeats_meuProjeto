@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.comunidadedevspace.taskbeats.R
-import com.comunidadedevspace.taskbeats.data.News
+import com.comunidadedevspace.taskbeats.data.local.local.News
 
 class NewsListAdapter(): ListAdapter<News, NewsViewHolder>(NewsListAdapter) {
 

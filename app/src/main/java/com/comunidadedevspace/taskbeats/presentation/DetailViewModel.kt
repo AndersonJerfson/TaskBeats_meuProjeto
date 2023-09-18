@@ -4,16 +4,13 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.comunidadedevspace.taskbeats.data.Task
-import com.comunidadedevspace.taskbeats.data.TaskDao
-import com.comunidadedevspace.taskbeats.data.TaskListApplication
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+import com.comunidadedevspace.taskbeats.data.local.local.Task
+import com.comunidadedevspace.taskbeats.data.local.local.TaskDao
+import com.comunidadedevspace.taskbeats.data.local.local.TaskListApplication
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 
 class DetailViewModel(
-    private val taskDao: TaskDao,
+    private val taskDao: TaskDao
 ): ViewModel() {
 
     fun execute(taskActyon: TaskActyon){

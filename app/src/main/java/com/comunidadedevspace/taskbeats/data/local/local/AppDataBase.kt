@@ -1,4 +1,4 @@
-package com.comunidadedevspace.taskbeats.data
+package com.comunidadedevspace.taskbeats.data.local.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

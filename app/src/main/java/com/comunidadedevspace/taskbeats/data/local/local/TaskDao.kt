@@ -1,4 +1,4 @@
-package com.comunidadedevspace.taskbeats.data
+package com.comunidadedevspace.taskbeats.data.local.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -20,8 +20,9 @@ interface TaskDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
      suspend fun update(task: Task)
 
+
     @Query("Delete from task")
-   suspend fun deleteAll()
+    suspend fun deleteAll()
 
     @Query("Delete from task where id = :id")
     suspend fun deleteByid(id: Int)
