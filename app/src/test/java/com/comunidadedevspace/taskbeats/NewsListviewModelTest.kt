@@ -38,7 +38,7 @@ class NewsListviewModelTest {
             )
             val response = NewsResponse(count = 1, items = newsList)
 
-            whenever(service.fetchNews()).thenReturn(response)
+            whenever(service.fetchTopNews()).thenReturn(response)
 
             undertest = NewsListViewModel(service)
 

@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitModule {
     fun creatNewService(): NewsServise {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://servicodados.ibge.gov.br/")
+            .baseUrl("https://api.thenewsapi.com/v1/news/")
             .addConverterFactory(GsonConverterFactory.create(Gson()))
 
         return retrofit.build().create(NewsServise::class.java)
