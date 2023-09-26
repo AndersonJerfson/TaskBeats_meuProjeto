@@ -30,21 +30,30 @@ class NewsListviewModelTest {
     @Test
     fun `GIVEM request succeed news WHEN fetch THEM return list`(){
         runBlocking {
-            val newsList = listOf(
-                NewsDto(id = 1,
+            val newsListTop = listOf(
+                NewsDto(id = "ugugug",
                 imagens = "img",
                 titulo = "titulo"
+             )
             )
+            val newsListAll = listOf(
+                NewsDto(id = "ugugug",
+                    imagens = "img",
+                    titulo = "titulo"
+                )
             )
-            val response = NewsResponse(count = 1, items = newsList)
+            val responseTop = NewsResponse(items = newsListAll)
+            val responseAll = NewsResponse(items = newsListTop)
 
-            whenever(service.fetchTopNews()).thenReturn(response)
+
+            whenever(service.fetchTopNews()).thenReturn(responseTop)
+            whenever(service.fetchAllNews()).thenReturn(responseAll)
 
             undertest = NewsListViewModel(service)
 
             val result = undertest.newslivedata.getOrAwaitValue()
 
-            assert(result == newsList)
+            assert(result == newsListTop + newsListAll)
         }
 
     }

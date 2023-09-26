@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//https://inshorts.deta.dev/news?category=science
+// https://api.thenewsapi.com/v1/news/top?api_token=${BuildConfig.API_KEY}&locale=us
 
 object RetrofitModule {
     fun creatNewService(): NewsServise {

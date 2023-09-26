@@ -23,8 +23,11 @@ class NewsListViewModel(
     private fun getNews(){
         viewModelScope.launch {
             try {
-                val respond = newsservice.fetchTopNews()
-                _newsLiveData.value = respond.items
+                val respondTop = newsservice.fetchTopNews().items
+                val respodAll = newsservice.fetchAllNews().items
+                _newsLiveData.value = respondTop + respodAll
+
+
 
             }catch (ex: Exception){
                 ex.printStackTrace()
